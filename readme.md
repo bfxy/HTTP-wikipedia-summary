@@ -1,10 +1,4 @@
 
-* [Что такое HTTP](#чтотакоеHTTP)
-    - [Пример HTTP сессии](#пример HTTP сессии)
-    - [HTTP и другие протоколы](#HTTP и другие протоколы)
-* [Источники](#источники)
-
-
 ## Что такое HTTP
 
 HTTP (Hypertext Transfer Protocol) — это протокол передачи данных по технологии «клиент–сервер». HTTP устанавливает связь между клиентом и сервером в виде **запросов** и **ответов**. Клиент инициирует соединение и посылает запрос на совершение действия. Сервер получает этот запрос, выполняет действие и возвращает клиенту ответ с результатом.
@@ -18,8 +12,8 @@ HTTP (Hypertext Transfer Protocol) — это протокол передачи 
 Стандартный HTTP-запрос (request) для отображения веб-страницы в браузере выглядит так:
 
 ```HTTP
-GET /company/jobs/ HTTP/1.1
-Host: www.jetbrains.com
+GET /jobs/ HTTP/1.1
+Host: yandex.ru
 Connection: keep-alive
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
 User-Agent: Mozilla/5.0 (GERTY) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.65 Safari/537.36
@@ -54,7 +48,7 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 Content-Encoding: gzip
 
-!DOCTYPE html><html><head><title>JetBrains :: Currently Open Job Positions...
+!DOCTYPE html><html><head><title>...
 ```
 
 Стартовая строка ответа содержит версию протокола `HTTP/1.1`, код состояния `200` и пояснение к коду `OK`. Код состояния напрямую указывает на результат запроса. Например, коды типа `2xx` указывают на успешную обработку запроса, коды `3xx` сообщают о необходимости перенаправления запроса, коды `4xx` говорят об ошибке на стороне клиента, а коды `5xx` — об ошибке на стороне сервера.
