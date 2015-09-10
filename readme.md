@@ -1,3 +1,10 @@
+
+* [Что такое HTTP](#чтотакоеHTTP)
+    - [Пример HTTP сессии](#пример HTTP сессии)
+    - [HTTP и другие протоколы](#HTTP и другие протоколы)
+* [Источники](#источники)
+
+
 ## Что такое HTTP
 
 HTTP (Hypertext Transfer Protocol) — это протокол передачи данных по технологии «клиент–сервер». HTTP устанавливает связь между клиентом и сервером в виде **запросов** и **ответов**. Клиент инициирует соединение и посылает запрос на совершение действия. Сервер получает этот запрос, выполняет действие и возвращает клиенту ответ с результатом.
@@ -11,8 +18,8 @@ HTTP (Hypertext Transfer Protocol) — это протокол передачи 
 Стандартный HTTP-запрос (request) для отображения веб-страницы в браузере выглядит так:
 
 ```HTTP
-GET /jobs/vacancies/dev/dev_doc/ HTTP/1.1
-Host: yandex.ru
+GET /company/jobs/ HTTP/1.1
+Host: www.jetbrains.com
 Connection: keep-alive
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
 User-Agent: Mozilla/5.0 (GERTY) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.65 Safari/537.36
@@ -31,31 +38,30 @@ Accept-Language: en-US,en;q=0.8,ru;q=0.6
 ```HTTP
 POST person.php HTTP/1.1
 Host: vitalilobanov.hehe
-Some_header: some_value
+Content-Length: 39
 
-act=handwave&face=smile&message=HiYandex
+act=handwave&face=smile&message=heyguys
 ```
 
 Формат ответного сообщения совпадает с форматом запроса, однако его содержимое отличается. Стандартный HTTP-ответ (response) с веб-страницей выглядит так:
 
 ```HTTP
 HTTP/1.1 200 OK
-Server: nginx/1.6.1
-Date: Tue, 25 Nov 2014 16:29:48 GMT
+Server: nginx
+Date: Thu, 20 Aug 2015 16:55:48 GMT
 Content-Type: text/html; charset=UTF-8
 Transfer-Encoding: chunked
 Connection: keep-alive
-Expires: Tue, 25 Nov 2014 16:39:48 GMT
 Content-Encoding: gzip
 
-<!DOCTYPE html><html xmlns:og="http://opengraphprotocol.org/schema/"...
+!DOCTYPE html><html><head><title>JetBrains :: Currently Open Job Positions...
 ```
 
 Стартовая строка ответа содержит версию протокола `HTTP/1.1`, код состояния `200` и пояснение к коду `OK`. Код состояния напрямую указывает на результат запроса. Например, коды типа `2xx` указывают на успешную обработку запроса, коды `3xx` сообщают о необходимости перенаправления запроса, коды `4xx` говорят об ошибке на стороне клиента, а коды `5xx` — об ошибке на стороне сервера.
 
 Заголовки ответа также содержат параметры транзакции. Например, параметр `Content-Type:` указывает на формат передаваемого клиенту ресурса, то есть `text/html`. Заголовки ответа включают сведения о сервере, дате транзакции, механизмах кеширования, кодировках и другие параметры.   
 
-Тело сообщения ответа содержит описание запрошенного ресурса. В случае примера выше, ресурс — это HTML-страница, которую клиент получает и показывает пользователю: `<!DOCTYPE html><html xmlns:og=...`
+Тело сообщения ответа содержит описание запрошенного ресурса. В случае примера выше, ресурс — это HTML-страница, которую клиент получает и показывает пользователю: `<!DOCTYPE html><html><head><title>...`
 
 ### HTTP и другие протоколы
 
@@ -63,7 +69,7 @@ HTTP — это протокол **прикладного** уровня из с
 
 В отличие от TCP и многих протоколов, HTTP — это **stateless**-протокол, то есть протокол, который не сохраняет состояние соединения. Это означает, что HTTP-соединение прерывается после каждой транзакции без сохранения сведений об этой транзакции. Однако различные клиентские и серверные приложения могут запоминать сведения о транзакциях и сессиях. Это полезно, например, когда нужно сохранять авторизацию пользователя на веб-сайте без необходимости выполнять аутентификацию в каждом запросе.
 
-##### Дополнительные источники
+## Источники
 
 1. [HTTP — Webmaster in a Nutshell](http://docstore.mik.ua/orelly/webprog/webnut/ch17_01.htm)
 2. [Hypertext Transfer Protocol — Wikipedia (en)](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
